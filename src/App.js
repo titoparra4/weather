@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import Header from './componentes/Header';
+import Formulario from './componentes/Formulario';
 
 class App extends Component {
 	render() {
-		return <div className="App" />;
+		return (
+			<div className="app">
+				<Header titulo="Weather React" />
+				<Formulario />
+			</div>
+		);
 	}
 }
 
