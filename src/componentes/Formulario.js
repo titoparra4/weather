@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Fomulario extends Component {
 	ciudadRef = React.createRef();
@@ -51,5 +52,8 @@ class Fomulario extends Component {
 		);
 	}
 }
+Fomulario.propTypes = {
+	datosConsulta: PropTypes.func.isRequired
+};
 
 export default Fomulario;

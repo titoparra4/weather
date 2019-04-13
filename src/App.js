@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './componentes/Header';
 import Formulario from './componentes/Formulario';
 import Error from './componentes/Error';
+import Clima from './componentes/Clima';
 
 class App extends Component {
 	state = {
@@ -10,8 +11,10 @@ class App extends Component {
 		resultado: {}
 	};
 
-	componentDidUpdate() {
-		this.consultarApi();
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.consulta !== this.state.consulta) {
+			this.consultarApi();
+		}
 	}
 
 	componentDidMount() {
@@ -48,7 +51,8 @@ class App extends Component {
 			});
 		} else {
 			this.setState({
-				consulta: respuesta
+				consulta: respuesta,
+				error: false
 			});
 		}
 	};
@@ -60,7 +64,7 @@ class App extends Component {
 
 		if (error) {
 			resultado = <Error mensaje="The two fields are obligatory" />;
-		}
+		} else resultado = <Clima resultado={this.state.resultado} />;
 
 		return (
 			<div className="app">
