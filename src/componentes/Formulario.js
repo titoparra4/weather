@@ -35,6 +35,14 @@ class Fomulario extends Component {
 									<option value="PL">Poland</option>
 									<option value="CO">Colombia</option>
 									<option value="US">USA</option>
+									<option value="CN">China</option>
+									<option value="JP">Japan</option>
+									<option value="IT">Italy</option>
+									<option value="GB">England</option>
+									<option value="FR">France</option>
+									<option value="DE">Germany</option>
+									<option value="CH">Switzerland</option>
+									<option value="IE">Ireland</option>
 								</select>
 								<label htmlFor="pais">Country:</label>
 							</div>

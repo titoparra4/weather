@@ -28,7 +28,7 @@ class App extends Component {
 		if (!ciudad || !pais) return null;
 
 		const appId = '3e114dfec79e505e09d7c5ab1f4eeaa3';
-		let url = `http://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
+		let url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
 
 		fetch(url)
 			.then((respuesta) => {
@@ -58,13 +58,18 @@ class App extends Component {
 	};
 
 	render() {
-		const error = this.state.error;
+		const { error } = this.state.error,
+			{ cod } = this.state.resultado;
 
 		let resultado;
 
 		if (error) {
 			resultado = <Error mensaje="The two fields are obligatory" />;
-		} else resultado = <Clima resultado={this.state.resultado} />;
+		} else if (cod === '404') {
+			resultado = <Error mensaje="City not found" />;
+		} else {
+			resultado = <Clima resultado={this.state.resultado} />;
+		}
 
 		return (
 			<div className="app">
